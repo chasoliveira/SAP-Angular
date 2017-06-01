@@ -1,0 +1,11 @@
+packages
+OAuthAspNetWebApiRest.Api/bin
+OAuthAspNetWebApiRest.Api/obj
+OAuthAspNetWebApiRest.Data/bin
+OAuthAspNetWebApiRest.Data/obj
+OAuthAspNetWebApiRest.Domain/bin
+OAuthAspNetWebApiRest.Domain/obj
+
+SPA_Angular_AspNet_WebApi_Rest/bin
+SPA_Angular_AspNet_WebApi_Rest/obj
+SPA_Angular_AspNet_WebApi_Rest/node_modules

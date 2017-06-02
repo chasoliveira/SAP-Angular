@@ -1,7 +1,7 @@
-# OAuth_AspNet_WebApi_Rest
+# SPA-Angular
 
 
-Este projeto foi desenvolvido utilizando ASP.NET Web Api com Autenticação OAuth, com a abordagem code first:
+Este projeto foi desenvolvido utilizando ASP.NET Web Api e Angular, com Autenticação OAuth:
 
 
 ### Tecnologias
@@ -12,8 +12,11 @@ Este projeto foi desenvolvido utilizando ASP.NET Web Api com Autenticação OAut
 * [Simple Injector] - Biblioteca de Injeção de Dependência.
 * [ASP NET Identity] - Biblioteca de Autenticação com superte a Perfil, Integrção com OAuth.
 * [MS SQL Express] - Ferramenta de Banco de Dados Relacional.
+* [Angular] - Biblioteca para aplicações web com apenas uma página.
+* [Node.JS] - Biblioteca para aplicações web com apenas uma página.
 
 
+### 
 Licença
 ----
 
@@ -28,4 +31,5 @@ MIT
    [Simple Injector]: <https://simpleinjector.org/index.html>
    [ASP NET Identity]: <https://www.asp.net/identity>
    [MS SQL Express]: <https://www.microsoft.com/en-us/sql-server/sql-server-editions-express>
-
+   [Angular]: <https://angular.io/>
+   [Node.Js]: <https://nodejs.org/en/>

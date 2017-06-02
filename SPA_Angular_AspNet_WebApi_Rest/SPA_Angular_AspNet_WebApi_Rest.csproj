@@ -86,7 +86,6 @@
   <ItemGroup>
     <Content Include="app\app.component.html" />
     <Content Include="app\login-component\login.component.html" />
-    <Content Include="app\product-component\product.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -123,7 +122,6 @@
     <TypeScriptCompile Include="app\login-component\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
-    <TypeScriptCompile Include="app\product-component\product.component.ts" />
     <TypeScriptCompile Include="app\register-component\register.component.ts" />
     <TypeScriptCompile Include="app\services\product.service.ts" />
     <TypeScriptCompile Include="app\models\product.ts" />

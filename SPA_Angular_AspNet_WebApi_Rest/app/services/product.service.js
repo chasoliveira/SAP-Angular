@@ -8,16 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/first");
 var ProductService = (function () {
     function ProductService(http) {
         this.http = http;
-        this.producturl = "/api/product";
+        this.producturl = "http://localhost:20835/api/product";
     }
-    ProductService.prototype.get = function () {
-        return this.http.get(this.producturl).toPromise()
+    ProductService.prototype.getAll = function () {
+        return this.http.get(this.producturl, this.jwt())
+            .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
@@ -28,16 +32,18 @@ var ProductService = (function () {
     ProductService.prototype.jwt = function () {
         // create authorization header with jwt token
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        if (currentUser && currentUser.access_token) {
+            var headers = new http_1.Headers({
+                'Authorization': 'Bearer ' + currentUser.access_token, withCredentials: true
+            });
             return new http_1.RequestOptions({ headers: headers });
         }
     };
-    ProductService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], ProductService);
     return ProductService;
 }());
+ProductService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

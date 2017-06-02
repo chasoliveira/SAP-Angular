@@ -8,29 +8,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var product_service_1 = require('./../services/product.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var product_service_1 = require("./../services/product.service");
+require("rxjs/add/operator/toPromise");
 var HomeComponent = (function () {
     function HomeComponent(productService) {
         this.productService = productService;
         this.products = [];
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user)
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.loadProducts();
     };
     HomeComponent.prototype.loadProducts = function () {
         var _this = this;
-        this.productService.get()
+        this.productService.getAll()
             .then(function (p) { _this.products = p; });
     };
-    HomeComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            templateUrl: 'home.component.html'
-        }), 
-        __metadata('design:paramtypes', [product_service_1.ProductService])
-    ], HomeComponent);
     return HomeComponent;
 }());
+HomeComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        templateUrl: 'home.component.html',
+    }),
+    __metadata("design:paramtypes", [product_service_1.ProductService])
+], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

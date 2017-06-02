@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var Subject_1 = require('rxjs/Subject');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var Subject_1 = require("rxjs/Subject");
 var AlertService = (function () {
     function AlertService(router) {
         var _this = this;
@@ -44,11 +45,11 @@ var AlertService = (function () {
     AlertService.prototype.getMessage = function () {
         return this.subject.asObservable();
     };
-    AlertService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], AlertService);
     return AlertService;
 }());
+AlertService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router])
+], AlertService);
 exports.AlertService = AlertService;
 //# sourceMappingURL=alert.service.js.map

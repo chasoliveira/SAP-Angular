@@ -22,7 +22,7 @@ namespace OAuthAspNetWebApiRest.Api
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
 
             //Add CORS Handler
-            GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
+            //GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
         }
     }
 }

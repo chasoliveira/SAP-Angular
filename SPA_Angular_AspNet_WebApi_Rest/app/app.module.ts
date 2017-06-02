@@ -4,7 +4,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product-component/product.component';
 
 import { routing } from './app.routing';
 
@@ -25,11 +24,9 @@ import { RegisterComponent } from './register-component/register.component';
         routing,
         HttpModule,
         JsonpModule,
-        //AppRoutingModule,
     ],
     declarations: [
         AppComponent,
-        ProductComponent,
         AlertComponent,
         HomeComponent,
         LoginComponent,
@@ -40,6 +37,7 @@ import { RegisterComponent } from './register-component/register.component';
         AlertService,
         AuthenticationService,
         UserService,
+        ProductService
     ],
     bootstrap: [AppComponent]
 })

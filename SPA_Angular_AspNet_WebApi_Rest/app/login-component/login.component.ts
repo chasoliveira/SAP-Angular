@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
             .catch(error => {
                 this.alertService.error(error);
                 this.loading = false;
+                this.router.navigate(['/']);
             });
     }
 }

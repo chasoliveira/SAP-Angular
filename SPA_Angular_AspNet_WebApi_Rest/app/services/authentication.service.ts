@@ -8,7 +8,9 @@ export class AuthenticationService {
     constructor(private http: Http) { }
     private authenticateUrl = "http://localhost:20835";
     login(username: string, password: string) {
-        return this.http.post(`${this.authenticateUrl}/Token`, this.urlEncode({ username: username, password: password, 'grant_type': 'password' }), this.urlencoded())
+        var body =`username=${username}&password=${password}&grant_type=password`;
+        console.log(body);
+        return this.http.post(`${this.authenticateUrl}/Token`, body, this.headerOptions())
             .toPromise()
             .then(response => {
                 // login successful if there's a jwt token in the response
@@ -29,8 +31,10 @@ export class AuthenticationService {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
-    private urlencoded() {
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': 'http://localhost:12480' });
+    private headerOptions() {
+        let headers = new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded'
+        });
         return new RequestOptions({ headers: headers });
     }
     private urlEncode(obj: Object): string {

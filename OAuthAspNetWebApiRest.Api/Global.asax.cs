@@ -1,4 +1,4 @@
-﻿using OAuthAspNetWebApiRest.Api.App_Start;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -20,9 +20,15 @@ namespace OAuthAspNetWebApiRest.Api
             jsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             jsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+        }
 
-            //Add CORS Handler
-            //GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
+        protected void Application_BeginRequest()
+        {
+            if (Request.Headers.AllKeys.Contains("Origin") && Request.HttpMethod == "OPTIONS")
+            {
+                if (!Request.Path.Contains("/Token"))
+                    Response.Flush();
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Headers, Response, RequestOptions, URLSearchParams, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
@@ -8,9 +8,10 @@ export class AuthenticationService {
     constructor(private http: Http) { }
     private authenticateUrl = "http://localhost:20835";
     login(username: string, password: string) {
-        var body =`username=${username}&password=${password}&grant_type=password`;
+        var body = `username=${username}&password=${password}&grant_type=password`;
+        var bodyEconded = this.urlEncode({username:username, password: password, grant_type:'password'});
         console.log(body);
-        return this.http.post(`${this.authenticateUrl}/Token`, body, this.headerOptions())
+        return this.http.post(`${this.authenticateUrl}/Token`, bodyEconded, this.headerOptions())
             .toPromise()
             .then(response => {
                 // login successful if there's a jwt token in the response
@@ -33,9 +34,9 @@ export class AuthenticationService {
     }
     private headerOptions() {
         let headers = new Headers({
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF8'
         });
-        return new RequestOptions({ headers: headers });
+        return new RequestOptions({ method: RequestMethod.Post,headers: headers });
     }
     private urlEncode(obj: Object): string {
         let urlSearchParams = new URLSearchParams();

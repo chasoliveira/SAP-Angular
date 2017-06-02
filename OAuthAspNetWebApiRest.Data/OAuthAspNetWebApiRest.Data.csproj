@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="AppDbContextInitialize.cs" />
     <Compile Include="AppUserStore.cs" />
     <Compile Include="Migrations\201705312114068_FirstMigration.cs" />
     <Compile Include="Migrations\201705312114068_FirstMigration.Designer.cs">

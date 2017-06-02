@@ -28,7 +28,18 @@ namespace OAuthAspNetWebApiRest.Api.Providers
 
             _publicClientId = publicClientId;
         }
+        public override Task MatchEndpoint(OAuthMatchEndpointContext context)
+        {
+            if (context.OwinContext.Request.Method == "OPTIONS" && context.IsTokenEndpoint)
+            {
+                context.OwinContext.Response.StatusCode = 200;
+                context.RequestCompleted();
+                
+                return Task.FromResult<object>(null);
+            }
 
+            return base.MatchEndpoint(context);
+        }
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var userManager = context.OwinContext.GetUserManager<UserRepository>();

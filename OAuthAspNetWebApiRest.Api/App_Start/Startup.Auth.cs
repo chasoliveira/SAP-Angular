@@ -22,7 +22,7 @@ namespace OAuthAspNetWebApiRest.Api
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             var container = SimpleInjectorWebApiInitializer.Container;
             app.CreatePerOwinContext<AppDbContext>(AppDbContext.Create);
@@ -46,30 +46,6 @@ namespace OAuthAspNetWebApiRest.Api
             app.Use(async (context, next) => {
                 using (AsyncScopedLifestyle.BeginScope(container))
                 {
-                    IOwinRequest req = context.Request;
-                    IOwinResponse res = context.Response;
-                    // for auth2 token requests
-                    if (req.Path.StartsWithSegments(new PathString("/Token")))
-                    {
-                        // if there is an origin header
-                        var origin = req.Headers.Get("Origin");
-                        if (!string.IsNullOrEmpty(origin))
-                        {
-                            // allow the cross-site request
-                            res.Headers.Set("Access-Control-Allow-Origin", origin);
-                        }
-
-                        // if this is pre-flight request
-                        if (req.Method == "OPTIONS")
-                        {
-                            // respond immediately with allowed request methods and headers
-                            res.StatusCode = 200;
-                            res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Methods", "GET", "POST");
-                            res.Headers.AppendCommaSeparatedValues("Access-Control-Allow-Headers", "authorization", "content-type");
-                            // no further processing
-                     //       return;
-                        }
-                    }
                     await next();
                 }
             });

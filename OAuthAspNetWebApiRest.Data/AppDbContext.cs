@@ -8,6 +8,7 @@ namespace OAuthAspNetWebApiRest.Data
     {
         public AppDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
+            new AppDbContextInitialize(this);
         }
 
         public DbSet<Product> Products { get; set; }

@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import { Headers, Http, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise';
@@ -29,9 +29,10 @@ export class ProductService {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.access_token) {
             let headers = new Headers({
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + currentUser.access_token, withCredentials: true
             });
-            return new RequestOptions({ headers: headers });
+            return new RequestOptions({ method: RequestMethod.Get, headers: headers });
         }
     }
 }

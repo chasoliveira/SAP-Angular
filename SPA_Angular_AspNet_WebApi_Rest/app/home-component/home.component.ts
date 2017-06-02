@@ -7,11 +7,11 @@ import 'rxjs/add/operator/toPromise';
 @Component({
     moduleId: module.id,
     templateUrl: 'home.component.html',
-    //providers:[ProductService]
 })
 export class HomeComponent implements OnInit {
     products: Product[] = [];
     currentUser: any;
+    hasLoaded: boolean = false;
     constructor(private productService: ProductService) {
     }
 
@@ -23,6 +23,6 @@ export class HomeComponent implements OnInit {
     }
     private loadProducts() {
         this.productService.getAll()
-            .then(p => { this.products = p; });
+            .then(p => { this.products = p;});
     }
 }

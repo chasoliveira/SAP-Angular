@@ -13,7 +13,7 @@ Este projeto foi desenvolvido utilizando ASP.NET Web Api e Angular, com Autentic
 * [ASP NET Identity] - Biblioteca de Autenticação com superte a Perfil, Integrção com OAuth.
 * [MS SQL Express] - Ferramenta de Banco de Dados Relacional.
 * [Angular] - Biblioteca para aplicações web com apenas uma página.
-* [Node.JS] - Biblioteca para aplicações web com apenas uma página.
+* [Node.JS] - Engine de contrução em tempo de execução de aplicações JavaScript.
 
 
 ### 
